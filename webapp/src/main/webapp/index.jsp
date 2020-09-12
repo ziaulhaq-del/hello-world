@@ -207,6 +207,7 @@
 }
 </style>
 <div id="loadingPage" v-show='show' transition="fade">
+  <h1>I'm adding a cool feature</h1>
   <div id="container">
     <div class="a1">
       <div class="mo-boy"></div>
