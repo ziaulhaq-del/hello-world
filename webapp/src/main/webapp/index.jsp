@@ -156,7 +156,7 @@
        <div id="footerInfo">
            <h1>Contact Us</h1>
            <ul>
-               <li>Phone:602 000 1234</li>
+               <li>Phone:602 000 1784</li>
                <li>Phone:602 @@@ 21 21</li>
                <li>Email:********#gmail.com</li>
                <li>Address:Phoenix AZ 85015</li>
