@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Restaurant Keskin Main Page</title>
+    <title>Welcome to Keskin Restaurant</title>
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width">
 
