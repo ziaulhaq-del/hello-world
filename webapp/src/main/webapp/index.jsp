@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Burasi Keskinler Restaurant</title>
+    <title>Burasi Keskinler-3 Restaurant</title>
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width">
 
