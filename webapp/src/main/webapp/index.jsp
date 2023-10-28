@@ -31,7 +31,7 @@
     <p>Already have an account? <a href="#">Sign in</a>.</p>
   </div>
 
-   <h1> Auto Deployed on container successfully </h1>
+   <h1> Ansible created image and Deployed on container successfully </h1>
 
   
 </form>
