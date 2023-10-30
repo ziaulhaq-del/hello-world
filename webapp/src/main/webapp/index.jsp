@@ -32,6 +32,6 @@
   </div>
 
    <h1> Ansible created Image and Deployed on container successfully </h1>
-
+   <h1> completed CI/CD automation successfully </h1>
   
 </form>
