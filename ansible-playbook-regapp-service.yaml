@@ -1,0 +1,8 @@
+---
+- hosts: kubernetes
+  user: root
+#  become: true
+
+  tasks:
+  - name: deploy regapp service on kubernetes
+    command: kubectl apply -f regapp-service.yaml
