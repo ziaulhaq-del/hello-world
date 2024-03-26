@@ -23,8 +23,8 @@
 
   <header>
       <div id="hizala">
-          <h1>A New Class of Neighborhood Restaurant KK Foods </h1>
-          <h3>Everyone Wants To Eat Healthier and Fast Delivery</h3>
+          <h1 >KK Foods </h1>
+          <h3>Where foods is All You Need for a Complete Life</h3>
           <div id="headerSearch">
              
               <form>
