@@ -1,7 +1,7 @@
 <form action="action_page.php">
   <div class="container">
     <h1>Welcome to Code Hunting</h1>
-    <p>Please fill in this form to be a part of the team</p>
+    <p>Become part of the team fill in the FORM </p>
     <hr>
 
     <label for="user"><b>Username</b></label>
@@ -17,7 +17,7 @@
     <br> 
 
     <label for="psw-repeat"><b>Repeat Password</b></label>
-    <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
+    <input type="password" placeholder="Repeaaaaaat Password" name="psw-repeat" id="psw-repeat" required>
     <hr>
 
     <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
