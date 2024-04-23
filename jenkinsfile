@@ -4,7 +4,7 @@ pipeline{
 
     environment {
         
-        GITHUB_REPO = ""
+        GITHUB_REPO = "MohamedHamdy404/devops"
         DOCKER_REGISTRY = ""
         DOCKER_IMAGE = ""
         imageTag = ""
