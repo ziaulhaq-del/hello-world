@@ -1,7 +1,7 @@
 def AutoTag() {
     stage('AutoTag'){
-        sh 'TAG IS STARTED '
-        sh '$MY_BRANCH'
+        sh 'echo TAG IS STARTED '
+        sh 'echo MY_BRANCH'
         
     }
 }
