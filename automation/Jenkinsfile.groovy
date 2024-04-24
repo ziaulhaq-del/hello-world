@@ -7,9 +7,23 @@ pipeline {
         DOCKER_IMAGE = ""
         imageTag = ""
         imageName = ""
-        def AutoTag() {
-    stage('AutoTag'){
-        sh 'TAG IS STARTED '
+    }
+
+    stages {
+        stage("checkout") {
+            steps {
+                git url: "https://github.com/${GITHUB_REPO}.git", branch: 'develop'
+                sh 'cat flag.txt'
+            }
+        }
+
+        stage("tagging") {
+            steps {
+                script {
+                    sh 'echo "autotag started"'
+                    sh "git config --global --add safe.directory ${env.WORKSPACE}"
+
+                    sh 'TAG IS STARTED '
         sh '${env.MY_BRANCH}'
         switch(env.MY_BRANCH) {                     // Main Switch is Required to be on top // Double Switch Cases is suggested // Using (IF else )
             // Auto Increment Stage Tag
@@ -58,25 +72,6 @@ pipeline {
                 env.TAG = sh ( script: 'echo "$STREAM-$NEW_MAX.$MAJOR.$MINOR"', returnStdout: true).trim()
                 sh 'echo echo this is new tag version  ${TAG}'
         }
-    }
-}
-    }
-
-    stages {
-        stage("checkout") {
-            steps {
-                git url: "https://github.com/${GITHUB_REPO}.git", branch: 'develop'
-                sh 'cat flag.txt'
-            }
-        }
-
-        stage("tagging") {
-            steps {
-                script {
-                    sh 'echo "autotag started"'
-                    sh "git config --global --add safe.directory ${env.WORKSPACE}"
-
-                    env.AutoTag();
                 }
             }
         }
