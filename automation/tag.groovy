@@ -1,5 +1,5 @@
 def AutoTag() {
-    stage('Auto Tag'){
+    stage('AutoTag'){
         sh 'TAG IS STARTED '
         sh '${env.MY_BRANCH}'
         switch(env.MY_BRANCH) {                     // Main Switch is Required to be on top // Double Switch Cases is suggested // Using (IF else )
