@@ -7,7 +7,6 @@ pipeline {
         DOCKER_IMAGE = ""
         imageTag = ""
         imageName = ""
-        MY_BRANCH= "dev"
     }
 
     stages {
@@ -23,7 +22,7 @@ pipeline {
                 script {
                     sh 'echo "autotag started"'
                     sh "git config --global --add safe.directory ${env.WORKSPACE}"
-
+                    env.MY_BRANCH= "dev"
                     sh 'echo "TAG IS STARTED" '
                     sh 'echo ${MY_BRANCH}'
                     
