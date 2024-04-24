@@ -17,7 +17,8 @@ pipeline{
         stage ("checkout"){
 
             steps {
-                git url: "https://github.com/${GITHUB_REPO}.git", branch: 'main'
+                git url: "https://github.com/${GITHUB_REPO}.git", branch: 'master'
+                sh 'cat flag.txt'
             }
         }
     }
