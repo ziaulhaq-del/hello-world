@@ -25,7 +25,7 @@ pipeline {
                     sh "git config --global --add safe.directory ${env.WORKSPACE}"
 
                     sh 'echo "TAG IS STARTED" '
-                    sh 'echo ${env.MY_BRANCH}'
+                    sh '${MY_BRANCH}'
                     
                 }
             }
