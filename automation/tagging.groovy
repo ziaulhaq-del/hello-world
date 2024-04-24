@@ -20,6 +20,7 @@ def AutoTag() {
                 sh 'echo echo this is new beta version ${NEW_LINE_VERSION}'
                 env.TAG = sh ( script: 'echo "$STREAM-$CURRENT_MAX-beta-$NEW_LINE_VERSION"', returnStdout: true).trim()     //Generates New Tag for Beta
                 sh 'echo echo this is new tag version  ${TAG}'
+            break
             case release:
                 // Release Tag HINT= release-1.0.0-rc-1
                 env.LINE_VERSION = sh ( script: 'echo $STREAM_VERSION | cut -d "-" -f4', returnStdout: true).trim() //Store Suffix No. for StreamLine
