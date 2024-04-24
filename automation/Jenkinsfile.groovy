@@ -23,7 +23,6 @@ pipeline{
         }
         stage ("tagging"){
             steps {
-                container('maven') {
                     script{
                         sh ' echo "autotag started" '
                         sh "git config --global --add safe.directory ${env.WORKSPACE}"
@@ -33,7 +32,6 @@ pipeline{
                     }
                 }
             }
-        }
     }
 
 //test
