@@ -23,8 +23,8 @@ pipeline {
                     sh 'echo "autotag started"'
                     sh "git config --global --add safe.directory ${env.WORKSPACE}"
 
-                    sh 'TAG IS STARTED '
-                    sh '${env.MY_BRANCH}'
+                    sh 'echo "TAG IS STARTED" '
+                    sh 'echo ${env.MY_BRANCH}'
                     
                 }
             }
