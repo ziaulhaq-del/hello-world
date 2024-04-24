@@ -18,7 +18,7 @@ pipeline{
 
             steps {
                 git url: "https://github.com/${GITHUB_REPO}.git", branch: 'master'
-                sh 'cat flag.txt'
+                
             }
         }
     }
