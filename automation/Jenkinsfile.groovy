@@ -17,9 +17,15 @@ pipeline{
         stage ("checkout"){
 
             steps {
-                git url: "https://github.com/${GITHUB_REPO}.git", branch: 'master'
-                
+                git url: "https://github.com/${GITHUB_REPO}.git", branch: 'develop'
                 sh 'cat flag.txt'
+            }
+        }
+        stage ("tagging"){
+
+            steps{
+                pipelineScripts = load "automation/tagging.groovy"
+                pipelineScripts.autoTag();
             }
         }
     }
