@@ -1,5 +1,7 @@
-def autoTag() {
+def AutoTag() {
     stage('Auto Tag'){
+        sh 'TAG IS STARTED '
+        sh '${env.MY_BRANCH}'
         switch(env.MY_BRANCH) {                     // Main Switch is Required to be on top // Double Switch Cases is suggested // Using (IF else )
             // Auto Increment Stage Tag
             env.STREAM_VERSION = sh ( script: 'git describe --abbrev=0 --tags --match=$MY_BRANCH*', returnStdout: true).trim()      //Store Full tag
