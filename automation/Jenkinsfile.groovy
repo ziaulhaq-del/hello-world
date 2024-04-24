@@ -28,7 +28,7 @@ pipeline{
                         sh "git config --global --add safe.directory ${env.WORKSPACE}"
 
                         pipelineScripts = load "automation/tagging.groovy"
-                        pipelineScripts.AutoTag();
+                        pipelineScripts.AutoTag;
                     }
                 }
             }
