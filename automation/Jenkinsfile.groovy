@@ -24,8 +24,10 @@ pipeline{
         stage ("tagging"){
 
             steps{
-                pipelineScripts = load "automation/tagging.groovy"
-                pipelineScripts.autoTag();
+                script{
+                    pipelineScripts = load "automation/tagging.groovy"
+                    pipelineScripts.autoTag();
+                }
             }
         }
     }
