@@ -22,7 +22,9 @@ pipeline {
                 script {
                     sh 'echo "autotag started"'
                     sh "git config --global --add safe.directory ${env.WORKSPACE}"
-                    env.MY_BRANCH= "dev"
+                    env.MY_BRANCH= "develop"
+                    env.STREAM_VERSION = sh ( script: 'git describe --abbrev=0 --tags --match=$MY_BRANCH*', returnStdout: true).trim()
+                    sh 'echo ${STREAM_VERSION}'
                     sh 'echo "TAG IS STARTED" '
                     sh 'echo ${MY_BRANCH}'
                     
