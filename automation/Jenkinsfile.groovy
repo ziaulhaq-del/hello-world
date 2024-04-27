@@ -8,6 +8,7 @@ pipeline {
         imageTag = ""
         imageName = ""
         MY_BRANCH= "develop"
+        STREAM_VERSION = ""
     }
 
     stages {
