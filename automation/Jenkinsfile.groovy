@@ -11,13 +11,14 @@ pipeline {
     }
 
     stages {
+        /*
         stage("checkout") {
             steps {
                 git url: "https://github.com/${GITHUB_REPO}.git", branch: 'main'
                 sh 'cat flag.txt'
             }
         }
-
+*/
         stage("tagging") {
             steps {
                 script {
