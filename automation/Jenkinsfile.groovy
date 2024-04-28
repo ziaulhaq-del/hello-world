@@ -42,14 +42,6 @@ pipeline {
             }
         }
 
-        stage("Maven building"){
-            steps{
-                script{
-
-                }
-            }
-
-        }
 
         stage('publish report template'){
 			steps{
