@@ -63,8 +63,7 @@ pipeline {
 
 			writeFile (file: 'template.html', text: details )
 			archiveArtifacts artifacts: 'template.html'		
-			buildDescription "Generated Version: ${TAG}"
-            archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+			buildDescription "Generated Version: ${env.TAG}"
             // junit 'target/**/*.xml'
 			
         }
