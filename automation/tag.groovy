@@ -6,6 +6,8 @@ def AutoTag() {
         env.STREAM = sh ( script: 'echo $STREAM_VERSION | cut -d "-" -f1', returnStdout: true).trim()       //Store Stream Name
         env.CURRENT_MAX = sh ( script: 'echo $STREAM_VERSION | cut -d "-" -f2 ', returnStdout: true).trim() //Store Main Max 
         env.LINE_VERSION = sh ( script: 'echo $STREAM_VERSION | cut -d "-" -f4', returnStdout: true).trim()
+        
+        /*
         sh'echo we are at ${MY_BRANCH} stage'   //Print Stage
         sh 'echo ${STREAM_VERSION}'     //Print Latest Tag to the stage
         sh 'echo ${STREAM}'     //Print Stream Name
@@ -13,7 +15,7 @@ def AutoTag() {
         sh 'echo ${LINE_VERSION}'
         sh 'echo this is old ${MY_BRANCH} version ${LINE_VERSION}'      //Print old version
         // Switch cases based on branch name 
-       
+       */
     }
 }
 return this;
