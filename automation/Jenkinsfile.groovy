@@ -38,6 +38,7 @@ pipeline {
                     pipelineScripts = load "automation/tag.groovy"
 					pipelineScripts.AutoTag()
                     
+                    sh 'echo ${TAG}'
                 }
             }
         }
@@ -63,7 +64,7 @@ pipeline {
 
 			writeFile (file: 'template.html', text: details )
 			archiveArtifacts artifacts: 'template.html'		
-			currentBuild.description = "Generated Version: ${env.TAG}"
+			currentBuild.description = "Generated Version: ${TAG}"
             // junit 'target/**/*.xml'
 			
         }
