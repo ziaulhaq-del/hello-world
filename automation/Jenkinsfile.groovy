@@ -7,7 +7,7 @@ pipeline {
         DOCKER_IMAGE = ""
         imageTag = ""
         imageName = ""
-        MY_BRANCH = sh(script: 'git rev-parse --abbrev-ref HEAD', returnStdout: true).trim()
+        MY_BRANCH = env.BRANCH_NAME
     }
 
     stages {
