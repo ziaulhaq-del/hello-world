@@ -7,7 +7,17 @@ pipeline {
         DOCKER_IMAGE = ""
         imageTag = ""
         imageName = ""
-        MY_BRANCH = "develop"
+        MY_BRANCH = "release"
+        SERVICE_NAME = "Demo-service"
+        PROJECT_KEY= "${env.SERVICE_NAME}-${MY_BRANCH}"
+
+        def details = """ <h1>Jenkins Job Output </h1>
+			<p> Build Status:   ${currentBuild.currentResult} </p>
+			<p> Jenkins Job Name:   [ ${env.JOB_NAME} ] </p> 
+			<p> BUILD_NUMBER:   [ ${env.BUILD_NUMBER} ] </p>
+			<p> Jenkins Job Console Log:   <a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a></p>
+			<p> New Tag Version: [${env.TAG}] </p>
+			"""
     }
 
     stages {
@@ -23,7 +33,6 @@ pipeline {
             steps {
                 script {
 
-                    sh ' echo "autotag started" '
 					sh "git config --global --add safe.directory ${env.WORKSPACE}"
                     sh 'echo "autotag started"'
                     pipelineScripts = load "automation/tag.groovy"
@@ -32,5 +41,42 @@ pipeline {
                 }
             }
         }
+
+        stage("Maven building"){
+            steps{
+                script{
+
+                }
+            }
+
+        }
+
+        stage('publish report template'){
+			steps{
+				script{
+                    sh "echo 'stage to publish report'"
+                    details = """ <h1>Jenkins Job Output </h1>
+                    <p> Build Status:   ${currentBuild.currentResult} </p>
+                    <p> Jenkins Job Name:   [ ${env.JOB_NAME} ] </p> 
+                    <p> BUILD_NUMBER:   [ ${env.BUILD_NUMBER} ] </p>
+                    <p> Jenkins Job Console Log:   <a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a></p>
+                    <p> New Tag Version: [${env.TAG}] </p>
+                    """
+                }
+			}
+		}
+    }
+    post{
+		always {
+
+			writeFile (file: 'template.html', text: details )
+			archiveArtifacts artifacts: 'template.html'		
+			buildDescription "Generated Version: ${TAG}"
+            archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+            // junit 'target/**/*.xml'
+			
+        }
+		
+        
     }
 }
