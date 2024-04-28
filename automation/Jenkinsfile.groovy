@@ -7,7 +7,7 @@ pipeline {
         DOCKER_IMAGE = ""
         imageTag = ""
         imageName = ""
-        MY_BRANCH = "release"
+        MY_BRANCH = "main"
     }
 
     stages {
