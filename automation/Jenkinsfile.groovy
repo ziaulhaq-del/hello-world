@@ -64,7 +64,7 @@ pipeline {
 
 			writeFile (file: 'template.html', text: details )
 			archiveArtifacts artifacts: 'template.html'		
-			buildDescription = "Generated Version: ${TAG}"
+			currentBuild.description = "Generated Version: ${TAG}"
             // junit 'target/**/*.xml'
 			
         }
