@@ -9,7 +9,7 @@ def AutoTag() {
         env.CURRENT_MAX = sh ( script: 'echo $STREAM_VERSION | cut -d "-" -f2 ', returnStdout: true).trim() //Store Main Max 
         env.idf = sh ( script: 'echo $STREAM_VERSION | cut -d "-" -f3 ', returnStdout: true).trim() //Store branch idf
         env.LINE_VERSION = sh ( script: 'echo $STREAM_VERSION | cut -d "-" -f4', returnStdout: true).trim()
-        env.NEW_LINE_VERSION = ${LINE_VERSION}+1
+        env.NEW_LINE_VERSION = sh ( script: 'echo $((LINE_VERSION+1))', returnStdout: true).trim()
 
         sh'echo we are at ${MY_BRANCH} stage'   //Print Stage
         sh 'echo ${STREAM_VERSION}'     //Print Latest Tag to the stage
