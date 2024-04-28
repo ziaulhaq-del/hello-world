@@ -13,7 +13,7 @@ pipeline {
     stages {
         stage("checkout") {
             steps {
-                git url: "https://github.com/${GITHUB_REPO}.git", branch: 'develop'
+                git url: "https://github.com/${GITHUB_REPO}.git", branch: 'main'
                 sh 'cat flag.txt'
             }
         }
@@ -21,7 +21,7 @@ pipeline {
         stage("tagging") {
             steps {
                 script {
-                    
+
                     sh ' echo "autotag started" '
 					sh "git config --global --add safe.directory ${env.WORKSPACE}"
                     sh 'echo "autotag started"'
