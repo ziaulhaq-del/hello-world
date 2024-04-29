@@ -55,8 +55,10 @@ pipeline {
                     
                     sh 'echo ${TAG}'
                     */
+                    sh ' echo "READING JSON"'
                     def jsonContent = readFile('envi.json')
                     def envi = new groovy.json.JsonSlurper().parseText(jsonContent)
+                    sh ' echo "LOADED JSON"'
                     env.PROJECT_URL = envi.services.service[0].PROJECT_UR
                     sh 'echo $PROJECT_URL'
                     
