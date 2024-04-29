@@ -59,7 +59,7 @@ pipeline {
                     def jsonContent = readFile('envi.json')
                     def envi = new groovy.json.JsonSlurper().parseText(jsonContent)
                     sh ' echo "LOADED JSON"'
-                    env.PROJECT_URL = envi.services.service[0].PROJECT_UR
+                    env.PROJECT_URL = envi.services.service[1].PROJECT_UR
                     sh 'echo ${PROJECT_URL}'
                     
                 }
