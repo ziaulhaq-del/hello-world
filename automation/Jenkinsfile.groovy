@@ -56,7 +56,7 @@ pipeline {
                     sh 'echo ${TAG}'
                     */
                     env.envi = readJSON file : "${env.WORKDIR}\\envi.json"
-                    env.PROJECT_URL = envi.services.service[0].PROJECT_UR
+                    env.PROJECT_URL = envi.services.service[1].PROJECT_UR
                     sh 'echo $PROJECT_URL'
                     
                 }
@@ -86,7 +86,7 @@ pipeline {
 			archiveArtifacts artifacts: 'template.html'	
             script{	
                 try{
-                    currentBuild.description = "Generated Version: ${TAG}"
+                    currentBuild.description = "Generated Version: s"
                 // junit 'target/**/*.xml'
                 }catch (Exception e){
                     echo "An exception occurred: ${e.message}"
