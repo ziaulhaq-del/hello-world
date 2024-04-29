@@ -28,7 +28,7 @@ pipeline {
                 sh 'cat flag.txt'
             }
         }
-        */
+        
         stage("tagging") {
             steps {
                 script {
@@ -42,7 +42,7 @@ pipeline {
                 }
             }
         }
-
+        */
         stage("TEST") {
             steps {
                 script {
