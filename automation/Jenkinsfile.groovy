@@ -60,7 +60,7 @@ pipeline {
                     def envi = new groovy.json.JsonSlurper().parseText(jsonContent)
                     sh ' echo "LOADED JSON"'
                     env.PROJECT_URL = envi.services.service[0].PROJECT_UR
-                    sh 'echo $PROJECT_URL'
+                    sh 'echo ${PROJECT_URL}'
                     
                 }
             }

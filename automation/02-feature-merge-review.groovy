@@ -9,9 +9,7 @@ pipeline {
       }
 
 	environment{
-        envi = readJSON file : "${env.WORKDIR}\\envi.json"
-        PROJECT_URL = envi.services.service[0].PROJECT_UR
-		//PROJECT_URL = "git.qeema.io/qeema-platform/ticketing-service.git"
+		PROJECT_URL = "git.qeema.io/qeema-platform/ticketing-service.git"
 		REPOSITORY = "registry.tools.idp.qeema.io/"
 	  	REGISTRY = "registry.tools.idp.qeema.io/qeema-projects"
 		SERVICE_NAME = "ticketing-service"
