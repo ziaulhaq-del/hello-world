@@ -1,11 +1,21 @@
 {
-    "services":{
-        "service":[
-            {
-                "PROJECT_UR" : "TESTURLCOM"
-            }
-        ]
-
+    "projects": {
+      "project": [
+        {
+          "name": "PackingStation",
+          "solution": "PackingStation\\BLogic.Applications.PackingStation.sln",
+          "analysisFiles": "BLogic.Applications.PackingStation.exe"
+        },
+        {
+          "name": "MasterData",
+          "solution": "MasterData\\BLogic.Applications.MasterData.sln",
+          "analysisFiles": "BLogic.Applications.MasterData.exe"
+        },
+        {
+          "name": "OrderManager",
+          "solution": "OrderManager\\BLogic.Applications.OrderManager.sln",
+          "analysisFiles": "BLogic.Applications.OrderManager.exe"
+        }
+      ]
     }
-    
-}
+  }
