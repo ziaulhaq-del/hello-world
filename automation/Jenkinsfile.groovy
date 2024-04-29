@@ -55,7 +55,7 @@ pipeline {
                     
                     sh 'echo ${TAG}'
                     */
-                    env.envi = readJSON file : "${env.WORKDIR}\\envi.json"
+                    def projects = readJSON file: "${env.WORKSPACE}\\envi.json"
                     env.PROJECT_URL = envi.services.service[1].PROJECT_UR
                     sh 'echo $PROJECT_URL'
                     
