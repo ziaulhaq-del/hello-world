@@ -43,6 +43,19 @@ pipeline {
             }
         }
 
+        stage("") {
+            steps {
+                script {
+
+					sh "git config --global --add safe.directory ${env.WORKSPACE}"
+                    sh 'echo "autotag started"'
+                    pipelineScripts = load "automation/tag.groovy"
+					pipelineScripts.AutoTag()
+                    
+                    sh 'echo ${TAG}'
+                }
+            }
+        }
 
         stage('publish report template'){
 			steps{
@@ -64,9 +77,12 @@ pipeline {
 
 			writeFile (file: 'template.html', text: details )
 			archiveArtifacts artifacts: 'template.html'		
-			//currentBuild.description = "Generated Version: ${TAG}"
+            try{
+			    currentBuild.description = "Generated Version: ${TAG}"
             // junit 'target/**/*.xml'
-			
+            }catch (exception e){
+                echo "An exception occurred: ${e.message}"
+            }
         }
 		
         

@@ -20,7 +20,7 @@ def AutoTag() {
             sh 'echo this is new tag version ${TAG}'    //Print New Tag
         }else if(MY_BRANCH=="main"){
             sh 'echo we are in main condition'
-            env.STREAM_VERSION = sh ( script: 'git describe --abbrev=0 --tags --match=$MY_BRANCH*', returnStdout: true).trim()
+            env.STREAM_VERSION = sh ( script: 'git describe --abbrev=0 --tags --match=$MY_BRANCH*', returnStdout: true).trim() 
             sh 'echo ${STREAM_VERSION}'
             env.STREAM = sh ( script: 'echo $STREAM_VERSION | cut -d "-" -f1', returnStdout: true).trim()
             sh 'echo ${STREAM}'
