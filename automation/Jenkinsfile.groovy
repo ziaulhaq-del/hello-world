@@ -47,17 +47,23 @@ pipeline {
             steps {
                 script {
 
-					sh "git config --global --add safe.directory ${env.WORKSPACE}"
+                    sh "git config --global --add safe.directory ${env.WORKSPACE}"
                     sh 'echo "autotag started"'
-                    pipelineScripts = load "automation/tag.groovy"
-					pipelineScripts.AutoTag()
+                    
+                    /*pipelineScripts = load "automation/tag.groovy"
+                    pipelineScripts.AutoTag()
                     
                     sh 'echo ${TAG}'
+                    */
+                    env.envi = readJSON file : "${env.WORKDIR}\\envi.json"
+                    env.PROJECT_URL = envi.services.service[0].PROJECT_UR
+                    sh 'echo $PROJECT_URL'
+                    
                 }
             }
         }
 
-        stage('publish report template'){
+        /*stage('publish report template'){
 			steps{
 				script{
                     sh "echo 'stage to publish report'"
@@ -72,6 +78,7 @@ pipeline {
 			}
 		}
     }
+    */
     post{
 		always {
 
