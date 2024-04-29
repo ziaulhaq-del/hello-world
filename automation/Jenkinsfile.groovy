@@ -80,7 +80,7 @@ pipeline {
             try{
 			    currentBuild.description = "Generated Version: ${TAG}"
             // junit 'target/**/*.xml'
-            }catch (exception e){
+            }catch (Exception e){
                 echo "An exception occurred: ${e.message}"
             }
         }
