@@ -1,0 +1,9 @@
+def autoTag() {
+    stage('PushTag'){
+       
+
+        
+    }
+    
+
+}
