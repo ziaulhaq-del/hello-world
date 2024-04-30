@@ -10,6 +10,9 @@ pipeline {
         MY_BRANCH = "release"
         SERVICE_NAME = "Demo-service"
         PROJECT_KEY= "${env.SERVICE_NAME}-${MY_BRANCH}"
+        CONFIG_FILE = 'path/to/generic_config.yaml'
+        ENV_VARS_FILE = 'automation/environment.yaml'
+        
 
         def details = """ <h1>Jenkins Job Output </h1>
 			<p> Build Status:   ${currentBuild.currentResult} </p>
@@ -46,21 +49,23 @@ pipeline {
         stage("TEST") {
             steps {
                 script {
-
+                    
                     sh "git config --global --add safe.directory ${env.WORKSPACE}"
                     sh 'echo "autotag started"'
-                    
+
+                    sh ' echo "READING YAML"'
+                    sh "source ${ENV_VARS_FILE} && export $(cut -d= -f1 ${ENV_VARS_FILE} | xargs)"
                     /*pipelineScripts = load "automation/tag.groovy"
                     pipelineScripts.AutoTag()
                     
                     sh 'echo ${TAG}'
                     */
-                    sh ' echo "READING JSON"'
-                    def jsonContent = readFile('envi.json')
-                    def envi = new groovy.json.JsonSlurper().parseText(jsonContent)
-                    sh ' echo "LOADED JSON"'
+                    
+                    sh ' echo "LOADED YAML "'
                     //env.PROJECT_URL = envi.services.service[1].PROJECT_UR
-                    sh 'echo ${envi.projects.project[1].name}'
+                    echo "Jenkins server URL: ${env.JENKINS_SERVER_URL}"
+                    echo "Jenkins username: ${env.JENKINS_USERNAME}"
+                    echo "Jenkins password: ${env.JENKINS_PASSWORD}"
                     
                 }
             }

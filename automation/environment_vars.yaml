@@ -1,0 +1,13 @@
+# environment_vars.yaml
+
+microservice_1:
+  JENKINS_SERVER_URL: "https://jenkins.microservice1.com"
+  JENKINS_USERNAME: "user"
+  JENKINS_PASSWORD: "password"
+
+microservice_2:
+  JENKINS_SERVER_URL: "https://jenkins.microservice2.com"
+  JENKINS_USERNAME: "user"
+  JENKINS_PASSWORD: "password"
+
+# Add environment variables for other microservices...
