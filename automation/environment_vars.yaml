@@ -1,9 +1,4 @@
-microservice_1:
-  JENKINS_SERVER_URL: "https://jenkins.microservice1.com"
-  JENKINS_USERNAME: "user"
-  JENKINS_PASSWORD: "password"
-
-microservice_2:
-  JENKINS_SERVER_URL: "https://jenkins.microservice2.com"
-  JENKINS_USERNAME: "user"
-  JENKINS_PASSWORD: "password"
+jenkins:
+  server_url: "{{ JENKINS_SERVER_URL }}"
+  username: "{{ JENKINS_USERNAME }}"
+  password: "{{ JENKINS_PASSWORD }}"
