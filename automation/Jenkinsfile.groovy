@@ -12,6 +12,8 @@ pipeline {
         PROJECT_KEY= "${env.SERVICE_NAME}-${MY_BRANCH}"
         //CONFIG_FILE = 'path/to/generic_config.yaml'  
         ENV_VARS_FILE = 'automation/environment_vars.yaml'
+        microservice_2 = ""
+        microservice_1= ""
         
 
         def details = """ <h1>Jenkins Job Output </h1>
