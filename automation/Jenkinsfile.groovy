@@ -56,7 +56,7 @@ pipeline {
                     sh 'echo "autotag started"'
 
                     sh ' echo "READING YAML"'
-                    sh ". ${ENV_VARS_FILE} && export \$(cut -d= -f1 ${ENV_VARS_FILE} | xargs)"
+                    //sh ". ${ENV_VARS_FILE} && export \$(cut -d= -f1 ${ENV_VARS_FILE} | xargs)"
                     /*pipelineScripts = load "automation/tag.groovy"
                     pipelineScripts.AutoTag()
                     
@@ -65,7 +65,7 @@ pipeline {
                     sh "cat ${ENV_VARS_FILE}"
                     sh ' echo "LOADED YAML "'
                     //env.PROJECT_URL = envi.services.service[1].PROJECT_UR
-                    echo "Jenkins server URL for microservice_2: ${env.jenkins_server_url}"
+                    //echo "Jenkins server URL for microservice_2: ${env.jenkins_server_url}"
                    
                     
                 }
