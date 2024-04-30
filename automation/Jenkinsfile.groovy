@@ -54,7 +54,7 @@ pipeline {
                     sh 'echo "autotag started"'
 
                     sh ' echo "READING YAML"'
-                    sh "source ${ENV_VARS_FILE} && export \$(cut -d= -f1 ${ENV_VARS_FILE} | xargs)"
+                    sh ". ${ENV_VARS_FILE} && export \$(cut -d= -f1 ${ENV_VARS_FILE} | xargs)"
                     /*pipelineScripts = load "automation/tag.groovy"
                     pipelineScripts.AutoTag()
                     
