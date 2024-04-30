@@ -60,12 +60,11 @@ pipeline {
                     
                     sh 'echo ${TAG}'
                     */
-                    
+                    sh "cat ${ENV_VARS_FILE}"
                     sh ' echo "LOADED YAML "'
                     //env.PROJECT_URL = envi.services.service[1].PROJECT_UR
-                    echo "Jenkins server URL: ${env.JENKINS_SERVER_URL}"
-                    echo "Jenkins username: ${env.JENKINS_USERNAME}"
-                    echo "Jenkins password: ${env.JENKINS_PASSWORD}"
+                    echo "Jenkins server URL for microservice_2: ${env.microservice_2_JENKINS_SERVER_URL}"
+                   
                     
                 }
             }
