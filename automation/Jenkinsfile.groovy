@@ -11,7 +11,7 @@ pipeline {
         SERVICE_NAME = "Demo-service"
         PROJECT_KEY= "${env.SERVICE_NAME}-${MY_BRANCH}"
         CONFIG_FILE = 'path/to/generic_config.yaml'
-        ENV_VARS_FILE = 'automation/environment.yaml'
+        ENV_VARS_FILE = 'automation/environment_vars.yaml'
         
 
         def details = """ <h1>Jenkins Job Output </h1>
