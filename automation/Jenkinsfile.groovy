@@ -48,6 +48,29 @@ pipeline {
             }
         }
         */
+            
+        stage('Load Environment Variables') {
+            steps {
+                // Load environment-specific variables
+                script {
+                    def envVars = readYaml(file: ENV_VARS_FILE)
+                    envVars.each { microservice, values ->
+                        values.each { key, value ->
+                            env."${microservice}_${key}" = value
+                        }
+                    }
+                }
+            }
+        }
+
+            stage('Use Environment Variables') {
+            steps {
+                // Now you can access the environment variables in your pipeline
+                echo "Jenkins server URL for microservice_1: ${env.microservice_1_JENKINS_SERVER_URL}"
+                echo "Jenkins server URL for microservice_2: ${env.microservice_2_JENKINS_SERVER_URL}"
+            }
+        }    
+
         stage("TEST") {
             steps {
                 script {
