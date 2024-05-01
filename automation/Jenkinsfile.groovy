@@ -16,11 +16,7 @@ pipeline {
         microservice_1= ""    
 
         def envVars = readYaml(file: ENV_VARS_FILE)
-            envVars.each { microservice, values ->
-                values.each { key, value ->
-                    env."${microservice}_${key}" = value
-                }
-            }
+ 
 
         def details = """ <h1>Jenkins Job Output </h1>
 			<p> Build Status:   ${currentBuild.currentResult} </p>
@@ -29,6 +25,13 @@ pipeline {
 			<p> Jenkins Job Console Log:   <a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a></p>
 			<p> New Tag Version: [${env.TAG}] </p>
 			"""
+            script{
+                envVars.each { microservice, values ->
+                values.each { key, value ->
+                    env."${microservice}_${key}" = value
+                }
+            }
+            }
     }
 
     stages {
