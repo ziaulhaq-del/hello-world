@@ -2,7 +2,7 @@
 
 pipelinedemo:
   PROJECT_URL: "git.qeema.io/qeema-platform/pipeline-demo.git"
-  REPOSITORY: "registry.tools.idp.qeema.io/"
+  REPOSITORY: "registry.tools.idp.qeema.io"
 	REGISTRY: "registry.tools.idp.qeema.io/qeema-projects"
 	SERVICE_NAME: "pipelinedemo-service"
   SONAR_TOKEN: credentials('JENKINS_SONAR_TOKEN_USER')
