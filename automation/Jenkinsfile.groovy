@@ -60,14 +60,6 @@ pipeline {
                         }
                     }
                 }
-                // Debugging: Print loaded environment variables
-                script {
-                    envVars.each { microservice, values ->
-                        values.each { key, value ->
-                            echo "${microservice}_${key}: ${value}"
-                        }
-                    }
-                }
             }
         }
 
@@ -77,7 +69,7 @@ pipeline {
                 //${env.microservice_1_JENKINS_SERVER_URL}
                 
                 echo "Jenkins server URL for microservice_1: ${env.pipelinedemo_PROJECT_URL}"
-                echo "Jenkins server URL for microservice_2: ${env.microservice_2_JENKINS_SERVER_URL}"
+                //echo "Jenkins server URL for microservice_2: ${env.microservice_2_JENKINS_SERVER_URL}"
             }
         }    
 
