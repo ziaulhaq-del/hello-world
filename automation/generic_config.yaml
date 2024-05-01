@@ -1,8 +1,21 @@
 # generic_config.yaml
 
-jenkins:
-  server_url: "{{ JENKINS_SERVER_URL }}"
-  username: "{{ JENKINS_USERNAME }}"
-  password: "{{ JENKINS_PASSWORD }}"
+ticketing:
+  JENKINS_SERVER_URL: "https://jenkins.microservice2.com"
+  SERVICE_NAME: "Ticketing_service"
+  DATA: "data"
+  password: "password"
+  SONAR_URL: "{{ URL }}"
+  SONAR_TOKEN: "{{ TOKEN }}"
+
+
+microservice_x:
+  JENKINS_SERVER_URL: "https://jenkins.microservice2.com"
+  SERVICE_NAME: "microservice_x"
+  DATA: "data"
+  password: "password"
+  SONAR_URL: "{{ URL }}"
+  SONAR_TOKEN: "{{ TOKEN }}"
+
 
 # Add more configuration options as needed...

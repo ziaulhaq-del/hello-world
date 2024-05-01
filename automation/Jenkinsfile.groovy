@@ -14,7 +14,15 @@ pipeline {
         ENV_VARS_FILE = 'automation/environment_vars.yaml'
         microservice_2 = ""
         microservice_1= ""
+        ggwp = "${ticketing_JENKINS_SERVER_URL}"
         
+
+        def envVars = readYaml(file: ENV_VARS_FILE)
+            envVars.each { microservice, values ->
+                values.each { key, value ->
+                    env."${microservice}_${key}" = value
+                }
+            }
 
         def details = """ <h1>Jenkins Job Output </h1>
 			<p> Build Status:   ${currentBuild.currentResult} </p>
@@ -48,7 +56,7 @@ pipeline {
             }
         }
         */
-            
+        /*    
         stage('Load Environment Variables') {
             steps {
                 // Load environment-specific variables
@@ -62,12 +70,14 @@ pipeline {
                 }
             }
         }
-
+        */
             stage('Use Environment Variables') {
             steps {
                 // Now you can access the environment variables in your pipeline
-                echo "Jenkins server URL for microservice_1: ${env.microservice_1_JENKINS_SERVER_URL}"
-                echo "Jenkins server URL for microservice_2: ${env.microservice_2_JENKINS_SERVER_URL}"
+                ${env.ticketing_JENKINS_SERVER_URL}
+                
+                echo "Jenkins server URL for microservice_1: ${env.ticketing_JENKINS_SERVER_URL}"
+                //echo "Jenkins server URL for microservice_2: ${env.microservice_2_JENKINS_SERVER_URL}"
             }
         }    
 
@@ -86,7 +96,8 @@ pipeline {
                     sh 'echo ${TAG}'
                     */
                     sh "cat ${ENV_VARS_FILE}"
-                    sh ' echo "LOADED YAML "'
+                    sh "========================"
+                    sh "echo ${ggwp}"
                     //env.PROJECT_URL = envi.services.service[1].PROJECT_UR
                     //echo "Jenkins server URL for microservice_2: ${env.jenkins_server_url}"
                    
