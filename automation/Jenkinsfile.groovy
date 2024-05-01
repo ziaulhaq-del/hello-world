@@ -15,8 +15,6 @@ pipeline {
         microservice_2 = ""
         microservice_1= ""    
 
-        def envVars = readYaml(file: ENV_VARS_FILE)
- 
 
         def details = """ <h1>Jenkins Job Output </h1>
 			<p> Build Status:   ${currentBuild.currentResult} </p>
@@ -25,13 +23,6 @@ pipeline {
 			<p> Jenkins Job Console Log:   <a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a></p>
 			<p> New Tag Version: [${env.TAG}] </p>
 			"""
-            script{
-                envVars.each { microservice, values ->
-                values.each { key, value ->
-                    env."${microservice}_${key}" = value
-                }
-            }
-            }
     }
 
     stages {
@@ -76,7 +67,12 @@ pipeline {
             steps {
                 // Now you can access the environment variables in your pipeline
                 //${env.ticketing_JENKINS_SERVER_URL}
-                
+                def envVars = readYaml(file: ENV_VARS_FILE)
+                envVars.each { microservice, values ->
+                    values.each { key, value ->
+                        env."${microservice}_${key}" = value
+                    }
+            }
                 echo "Jenkins server URL for microservice_1: ${env.ticketing_PROJECT_URL}"
                 //echo "Jenkins server URL for microservice_2: ${env.microservice_2_JENKINS_SERVER_URL}"
             }
