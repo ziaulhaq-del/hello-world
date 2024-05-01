@@ -53,12 +53,9 @@ pipeline {
             steps {
                 // Load environment-specific variables
                 script {
-                    def envVars = readYaml(file: ENV_VARS_FILE)
-                    envVars.each { microservice, values ->
-                        values.each { key, value ->
-                            env."${microservice}_${key}" = value
-                        }
-                    }
+                    def yamlParser = new groovy.yaml.Yaml()
+                    def yamlData = readFile('${ENV_VARS_FILE}')
+                    def config = yamlParser.load(yamlData)
                 }
             }
         }
@@ -68,7 +65,7 @@ pipeline {
                 // Now you can access the environment variables in your pipeline
                 //${env.PROJECT_URL}
                 
-                echo "Jenkins server URL for microservice_1: ${env.PROJECT_URL}"
+                echo "Jenkins server URL for microservice_1: ${config.PROJECT_URL}"
                 //echo "Jenkins server URL for microservice_2: ${env.microservice_2_JENKINS_SERVER_URL}"
             }
         }    
