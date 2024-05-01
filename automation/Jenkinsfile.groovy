@@ -65,6 +65,9 @@ pipeline {
                     envVars.each { microservice, values ->
                         values.each { key, value ->
                             echo "${microservice}_${key}: ${value}"
+                        }
+                    }
+                }
             }
         }
 
