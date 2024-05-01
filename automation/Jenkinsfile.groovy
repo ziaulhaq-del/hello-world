@@ -13,9 +13,7 @@ pipeline {
         //CONFIG_FILE = 'path/to/generic_config.yaml'  
         ENV_VARS_FILE = 'automation/environment_vars.yaml'
         microservice_2 = ""
-        microservice_1= ""
-        ggwp = "${ticketing_JENKINS_SERVER_URL}"
-        
+        microservice_1= ""    
 
         def envVars = readYaml(file: ENV_VARS_FILE)
             envVars.each { microservice, values ->
@@ -97,7 +95,7 @@ pipeline {
                     */
                     sh "cat ${ENV_VARS_FILE}"
                     sh "========================"
-                    sh "echo ${ggwp}"
+                    sh "echo ${env.ticketing_IMAGE}"
                     //env.PROJECT_URL = envi.services.service[1].PROJECT_UR
                     //echo "Jenkins server URL for microservice_2: ${env.jenkins_server_url}"
                    
