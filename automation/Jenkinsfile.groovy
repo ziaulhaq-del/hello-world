@@ -54,11 +54,13 @@ pipeline {
                 // Load environment-specific variables
                 script {
                     def envVars = readYaml(file: ENV_VARS_FILE)
+                    withEnv(["PATH+YAML=${envVars.microservice_x.PATH}"]) {
                     envVars.each { microservice, values ->
                         values.each { key, value ->
                             env."${key}" = value
                         }
-                    }
+    }
+}
                 }
             }
         }
