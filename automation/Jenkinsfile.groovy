@@ -60,6 +60,11 @@ pipeline {
                         }
                     }
                 }
+                // Debugging: Print loaded environment variables
+                script {
+                    envVars.each { microservice, values ->
+                        values.each { key, value ->
+                            echo "${microservice}_${key}: ${value}"
             }
         }
 
