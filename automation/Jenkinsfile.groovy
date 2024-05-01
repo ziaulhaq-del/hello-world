@@ -66,7 +66,7 @@ pipeline {
             stage('Use Environment Variables') {
             steps {
                 // Now you can access the environment variables in your pipeline
-                //${env.ticketing_JENKINS_SERVER_URL}
+                ${env.PROJECT_URL}
                 
                 echo "Jenkins server URL for microservice_1: ${env.PROJECT_URL}"
                 //echo "Jenkins server URL for microservice_2: ${env.microservice_2_JENKINS_SERVER_URL}"
