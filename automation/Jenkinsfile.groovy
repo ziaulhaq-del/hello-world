@@ -48,29 +48,32 @@ pipeline {
             }
         }
         */
-          
+        /*    
         stage('Load Environment Variables') {
             steps {
                 // Load environment-specific variables
                 script {
                     def envVars = readYaml(file: ENV_VARS_FILE)
-                    withEnv(["PATH+YAML=${envVars.microservice_x.PATH}"]) {
                     envVars.each { microservice, values ->
                         values.each { key, value ->
-                            env."${key}" = value
+                            env."${microservice}_${key}" = value
                         }
-    }
-}
+                    }
                 }
             }
         }
-        
+        */
             stage('Use Environment Variables') {
             steps {
                 // Now you can access the environment variables in your pipeline
-                //${env.PROJECT_URL}
-                
-                echo "Jenkins server URL for service: ${env.PROJECT_URL}"
+                //${env.ticketing_JENKINS_SERVER_URL}
+                def envVars = readYaml(file: ENV_VARS_FILE)
+                envVars.each { microservice, values ->
+                    values.each { key, value ->
+                        env."${microservice}_${key}" = value
+                    }
+            }
+                echo "Jenkins server URL for microservice_1: ${env.pipelinedemo_PROJECT_URL}"
                 //echo "Jenkins server URL for microservice_2: ${env.microservice_2_JENKINS_SERVER_URL}"
             }
         }    
@@ -90,8 +93,8 @@ pipeline {
                     sh 'echo ${TAG}'
                     */
                     sh "cat ${ENV_VARS_FILE}"
-                    sh "echo ========================"
-                    sh "echo ${env.IMAGE}"
+                    sh "========================"
+                    sh "echo ${env.ticketing_IMAGE}"
                     //env.PROJECT_URL = envi.services.service[1].PROJECT_UR
                     //echo "Jenkins server URL for microservice_2: ${env.jenkins_server_url}"
                    
