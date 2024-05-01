@@ -69,7 +69,7 @@ pipeline {
                 //${env.microservice_1_JENKINS_SERVER_URL}
                 
                 echo "Jenkins server URL for microservice_1: ${env.pipelinedemo_PROJECT_URL}"
-                //echo "Jenkins server URL for microservice_2: ${env.microservice_2_JENKINS_SERVER_URL}"
+                echo "Jenkins server URL for microservice_2: ${env.microservice_2_JENKINS_SERVER_URL}"
             }
         }    
 

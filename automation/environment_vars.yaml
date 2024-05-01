@@ -11,5 +11,13 @@ PROJECT_KEY: "${env.SERVICE_NAME}-${MY_BRANCH}"
 IMAGE: "pipelinedemo-service"
 
 
+microservice_x:
+JENKINS_SERVER_URL: "https://jenkins.microservice2.com"
+SERVICE_NAME: "microservice_x"
+DATA: "data"
+password: "password"
+SONAR_URL: "{{ URL }}"
+SONAR_TOKEN: "{{ TOKEN }}"
+
 
 # Add more configuration options as needed...
