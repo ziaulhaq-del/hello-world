@@ -55,7 +55,7 @@ pipeline {
                 script {
                     
                     
-                    def config = readYaml file: '${ENV_VARS_FILE}'
+                    def config = readYaml file: 'automation/environment_vars.yaml'
                 }
             }
         }
