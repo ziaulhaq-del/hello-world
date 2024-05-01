@@ -88,7 +88,7 @@ pipeline {
                     sh 'echo ${TAG}'
                     */
                     sh "cat ${ENV_VARS_FILE}"
-                    sh "========================"
+                    sh "echo ========================"
                     sh "echo ${env.IMAGE}"
                     //env.PROJECT_URL = envi.services.service[1].PROJECT_UR
                     //echo "Jenkins server URL for microservice_2: ${env.jenkins_server_url}"
