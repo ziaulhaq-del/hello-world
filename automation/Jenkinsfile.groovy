@@ -53,9 +53,9 @@ pipeline {
             steps {
                 // Load environment-specific variables
                 script {
-                    def yamlParser = new groovy.yaml.Yaml()
-                    def yamlData = readFile('${ENV_VARS_FILE}')
-                    def config = yamlParser.load(yamlData)
+                    
+                    
+                    def config = readYaml file: '${ENV_VARS_FILE}'
                 }
             }
         }
