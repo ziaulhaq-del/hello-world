@@ -4,8 +4,7 @@ pipeline {
     environment {
 
         PROJECT_KEY= "${env.SERVICE_NAME}-${MY_BRANCH}"
-        SONAR_TOKEN_ID = ${env.pipelinedemo_SONAR_TOKEN_ID}
-        SONAR_TOKEN: credentials('${env.SONAR_TOKEN_ID}')
+        SONAR_TOKEN: credentials('JENKINS_SONAR_TOKEN_USER')
         CONFIG_FILE = 'automation/generic_config.yaml'  
         ENV_VARS_FILE = 'automation/environment_vars.yaml'
         
