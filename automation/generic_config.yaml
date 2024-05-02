@@ -1,4 +1,3 @@
-# generic_config.yaml
 
 pipelinedemo:
   PROJECT_URL: "git.qeema.io/qeema-platform/pipeline-demo.git"
@@ -15,5 +14,3 @@ pipelinedemo_2:
   SONAR_TOKEN: credentials('JENKINS_SONAR_TOKEN_USER')
   SONAR_URL: "https://qplatform.dev.qeema.io/sonarqube"
   IMAGE: "pipelinedemo-service"
-
-# Add more configuration options as needed...

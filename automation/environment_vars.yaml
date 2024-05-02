@@ -1,11 +1,10 @@
-# generic_config.yaml
 
 develop:
   MY_BRANCH: "develop"
   NAMESPACE: "hr-dev"
   KUBECONFIG: "hr-dev-kubeconfig"
   VALUE_YAML_FILE: "values_dev.yaml"
-  
+
 release:
   MY_BRANCH: "release"
   NAMESPACE: "hr-sit"
@@ -23,5 +22,3 @@ prod:
   NAMESPACE: "app-staging"
   KUBECONFIG: "staging-kubeconfig-2"
   VALUE_YAML_FILE: "values_prod.yaml"
-
-# Add more configuration options as needed...
