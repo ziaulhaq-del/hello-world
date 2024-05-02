@@ -128,14 +128,14 @@ pipeline {
     
         post {
         always {
-            script {    
+                
 
             def user = currentBuild.rawBuild.getCause(hudson.model.Cause$UserIdCause)?.userName ?: "Unknown"
 
             emailext body: "Build was successful. Triggered by: ${user}",
             subject: "CI Pipeline for ${selectedBranch}",
             recipientProviders: [[$class: 'RequesterRecipientProvider']]
-            }
+            
 
         }
     }
