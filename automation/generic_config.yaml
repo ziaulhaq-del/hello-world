@@ -4,9 +4,8 @@ pipelinedemo:
   PROJECT_URL: "git.qeema.io/qeema-platform/pipeline-demo.git"
   REPOSITORY: "registry.tools.idp.qeema.io"
   SERVICE_NAME: "pipelinedemo-service"
-  SONAR_TOKEN: credentials('JENKINS_SONAR_TOKEN_USER')
+  SONAR_TOKEN_ID: 'JENKINS_SONAR_TOKEN_USER'
   SONAR_URL: "https://qplatform.dev.qeema.io/sonarqube"
-  PROJECT_KEY: "${env.SERVICE_NAME}-${MY_BRANCH}"
   IMAGE: "pipelinedemo-service"
 
 pipelinedemo_2:
@@ -15,7 +14,6 @@ pipelinedemo_2:
   SERVICE_NAME: "pipelinedemo-service"
   SONAR_TOKEN: credentials('JENKINS_SONAR_TOKEN_USER')
   SONAR_URL: "https://qplatform.dev.qeema.io/sonarqube"
-  PROJECT_KEY: "${env.SERVICE_NAME}-${MY_BRANCH}"
   IMAGE: "pipelinedemo-service"
 
 # Add more configuration options as needed...

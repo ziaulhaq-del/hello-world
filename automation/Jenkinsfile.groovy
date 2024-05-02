@@ -2,14 +2,9 @@ pipeline {
     agent any;
 
     environment {
-        GITHUB_REPO = "MohamedHamdy404/devops"
-        DOCKER_REGISTRY = ""
-        DOCKER_IMAGE = ""
-        imageTag = ""
-        imageName = ""
-        MY_BRANCH = "release"
-        SERVICE_NAME = "Demo-service"
+
         PROJECT_KEY= "${env.SERVICE_NAME}-${MY_BRANCH}"
+        SONAR_TOKEN: credentials('${env.pipelinedemo_SONAR_TOKEN_ID}')
         CONFIG_FILE = 'automation/generic_config.yaml'  
         ENV_VARS_FILE = 'automation/environment_vars.yaml'
         
