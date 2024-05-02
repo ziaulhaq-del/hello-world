@@ -1,5 +1,3 @@
-
-def user = currentBuild.rawBuild.getCause(hudson.model.Cause$UserIdCause)?.userName ?: "Unknown"
 pipeline {
     agent any;
 
@@ -16,7 +14,7 @@ pipeline {
 			<p> Jenkins Job Console Log:   <a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a></p>
 			<p> New Tag Version: [${env.TAG}] </p>
 			"""
-        
+        user = "${currentBuild.rawBuild.getCause(hudson.model.Cause$UserIdCause)?.userName}"
     }
 
     stages {
@@ -103,8 +101,8 @@ pipeline {
                     
                     sh 'echo ${TAG}'
                     */
-                    sh "cat ${ENV_VARS_FILE}"
-                    sh ' echo "LOADED YAML "'
+                    //sh "cat ${ENV_VARS_FILE}"
+                    sh  "echo ${user}"
                     //env.PROJECT_URL = envi.services.service[1].PROJECT_UR
                     //echo "Jenkins server URL for microservice_2: ${env.jenkins_server_url}"
                    
@@ -128,7 +126,7 @@ pipeline {
 			}
 		}*/
     }
-    
+    /*
         post {
         always {
                  
@@ -139,4 +137,5 @@ pipeline {
 
         }
     }
+    */
 }
