@@ -10,10 +10,8 @@ pipeline {
         MY_BRANCH = "release"
         SERVICE_NAME = "Demo-service"
         PROJECT_KEY= "${env.SERVICE_NAME}-${MY_BRANCH}"
-        //CONFIG_FILE = 'path/to/generic_config.yaml'  
+        CONFIG_FILE = 'automation/generic_config.yaml'  
         ENV_VARS_FILE = 'automation/environment_vars.yaml'
-        microservice_2 = ""
-        microservice_1= ""
         
 
         def details = """ <h1>Jenkins Job Output </h1>
@@ -62,13 +60,29 @@ pipeline {
                 }
             }
         }
+        stage('Load config Variables') {
+            steps {
+                // Load environment-specific variables
+                script {
+                    def configVar = readYaml(file: ENV_VARS_FILE)
+                    configVar.each { conf, values ->
+                        values.each { key, value ->
+                            env."${conf}_${key}" = value
+                        }
+                    }
+                }
+            }
+        }
 
             stage('Use Environment Variables') {
             steps {
                 // Now you can access the environment variables in your pipeline
                 //${env.microservice_1_JENKINS_SERVER_URL}
                 
-                echo "Jenkins server URL for microservice_1: ${env.pipelinedemo_PROJECT_URL}"
+                echo "Project URL for microservice_1: ${env.develop_NAMESPACE}"
+
+
+                echo "Micro_1 Project Key for microservice_1: ${env.pipelinedemo_PROJECT_KEY}"
                 //echo "Jenkins server URL for microservice_2: ${env.microservice_2_JENKINS_SERVER_URL}"
             }
         }    

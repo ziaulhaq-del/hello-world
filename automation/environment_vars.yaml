@@ -1,23 +1,27 @@
 # generic_config.yaml
 
-pipelinedemo:
-  PROJECT_URL: "git.qeema.io/qeema-platform/pipeline-demo.git"
-  REPOSITORY: "registry.tools.idp.qeema.io"
-  SERVICE_NAME: "pipelinedemo-service"
-  SONAR_TOKEN: credentials('JENKINS_SONAR_TOKEN_USER')
-  SONAR_URL: "https://qplatform.dev.qeema.io/sonarqube"
+develop:
   MY_BRANCH: "develop"
-  PROJECT_KEY: "${env.SERVICE_NAME}-${MY_BRANCH}"
-  IMAGE: "pipelinedemo-service"
+  NAMESPACE: "hr-dev"
+  KUBECONFIG: "hr-dev-kubeconfig"
+  VALUE_YAML_FILE: "values_dev.yaml"
+  
+release:
+  MY_BRANCH: "release"
+  NAMESPACE: "hr-sit"
+  KUBECONFIG: "hr-sit-kubeconfig"
+  VALUE_YAML_FILE: "values_release.yaml"
 
+preprod:
+  MY_BRANCH: "preprod"
+  NAMESPACE: "hr-preprod"
+  KUBECONFIG: "hr-preprod-kubeconfig"
+  VALUE_YAML_FILE: "values_preprod.yaml"
 
-microservice_x:
-  JENKINS_SERVER_URL: "https://jenkins.microservice2.com"
-  SERVICE_NAME: "microservice_x"
-  DATA: "data"
-  password: "password"
-  SONAR_URL: "{{ URL }}"
-  SONAR_TOKEN: "{{ TOKEN }}"
-
+prod:
+  MY_BRANCH: "main"
+  NAMESPACE: "app-staging"
+  KUBECONFIG: "staging-kubeconfig-2"
+  VALUE_YAML_FILE: "values_prod.yaml"
 
 # Add more configuration options as needed...
