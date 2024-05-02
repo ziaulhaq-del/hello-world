@@ -65,8 +65,8 @@ pipeline {
                             env."${conf}_${key}" = value
                         }
                     }
-                env.SERVICE_NAME = ${env.pipelinedemo_SERVICE_NAME}
-                env.MY_BRANCH = ${env.develop_MY_BRANCH}
+                env.SERVICE_NAME = "${env.pipelinedemo_SERVICE_NAME}"
+                env.MY_BRANCH = "${env.develop_MY_BRANCH}"
                 }
             }
         }
