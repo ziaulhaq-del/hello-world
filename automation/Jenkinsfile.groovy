@@ -77,7 +77,7 @@ pipeline {
                 echo "Project URL for microservice_1: ${env.develop_NAMESPACE}"
 
 
-                echo "Micro_1 Project Key for microservice_1: ${conf.pipelinedemo_PROJECT_KEY}"
+                echo "Micro_1 Project Key for microservice_1: ${env.pipelinedemo_PROJECT_KEY}"
 
 
                 echo "Micro_1 Project Key : ${env.PROJECT_KEY}"
