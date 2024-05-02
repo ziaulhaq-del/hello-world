@@ -76,8 +76,8 @@ pipeline {
                 
                 echo "Project URL for microservice_1: ${env.develop_NAMESPACE}"
 
-                SERVICE_NAME = ${env.pipelinedemo_SERVICE_NAME}
-                MY_BRANCH = ${env.develop_MY_BRANCH}
+                env.SERVICE_NAME = ${env.pipelinedemo_SERVICE_NAME}
+                env.MY_BRANCH = ${env.develop_MY_BRANCH}
                 echo "Micro_1 Project Key for microservice_1: ${env.pipelinedemo_REPOSITORY}"
 
 
