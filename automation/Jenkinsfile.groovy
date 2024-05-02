@@ -14,6 +14,7 @@ pipeline {
 			<p> Jenkins Job Console Log:   <a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a></p>
 			<p> New Tag Version: [${env.TAG}] </p>
 			"""
+        def user = currentBuild.rawBuild.getCause(hudson.model.Cause$UserIdCause)?.userName ?: "Unknown"
     }
 
     stages {
@@ -130,7 +131,7 @@ pipeline {
         always {
                 
 
-            def user = currentBuild.rawBuild.getCause(hudson.model.Cause$UserIdCause)?.userName ?: "Unknown"
+            
 
             emailext body: "Build was successful. Triggered by: ${user}",
             subject: "CI Pipeline for ${selectedBranch}",
