@@ -2,8 +2,6 @@ pipeline {
     agent any;
 
     environment {
-
-        PROJECT_KEY= "${env.SERVICE_NAME}-${env.MY_BRANCH}"
         SONAR_TOKEN= credentials('JENKINS_SONAR_TOKEN_USER')
         CONFIG_FILE = 'automation/generic_config.yaml'  
         ENV_VARS_FILE = 'automation/environment_vars.yaml'
@@ -67,6 +65,7 @@ pipeline {
                     }
                 env.SERVICE_NAME = "${env.pipelinedemo_SERVICE_NAME}"
                 env.MY_BRANCH = "${env.develop_MY_BRANCH}"
+                env.PROJECT_KEY= "${env.SERVICE_NAME}-${env.MY_BRANCH}"
                 }
             }
         }
