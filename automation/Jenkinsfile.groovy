@@ -14,7 +14,7 @@ pipeline {
 			<p> Jenkins Job Console Log:   <a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a></p>
 			<p> New Tag Version: [${env.TAG}] </p>
 			"""
-        user = '${currentBuild.rawBuild.getCause(hudson.model.Cause$UserIdCause)?.userName ?: "Unknown"}'
+        user = "${currentBuild.rawBuild.getCause(hudson.model.Cause$UserIdCause)?.userName ?: 'Unkown' }"
     }
 
     stages {
