@@ -126,21 +126,17 @@ pipeline {
 		}*/
     }
     
-    post{
-		always {
+        post {
+        always {
+            script {    
 
-			writeFile (file: 'template.html', text: details )
-			archiveArtifacts artifacts: 'template.html'	
-            script{	
-                try{
-                    currentBuild.description = "Generated Version: s"
-                // junit 'target/**/*.xml'
-                }catch (Exception e){
-                    echo "An exception occurred: ${e.message}"
-                }
+            def user = currentBuild.rawBuild.getCause(hudson.model.Cause$UserIdCause)?.userName ?: "Unknown"
+
+            emailext body: "Build was successful. Triggered by: ${user}",
+            subject: "CI Pipeline for ${selectedBranch}",
+            recipientProviders: [[$class: 'RequesterRecipientProvider']]
             }
+
         }
-		
-        
     }
 }
