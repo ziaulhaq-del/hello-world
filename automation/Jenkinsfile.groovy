@@ -83,6 +83,9 @@ pipeline {
 
 
                 echo "Micro_1 Project Key for microservice_1: ${env.pipelinedemo_PROJECT_KEY}"
+
+
+                echo "Micro_1 Project Key : ${env.PROJECT_KEY}"
                 //echo "Jenkins server URL for microservice_2: ${env.microservice_2_JENKINS_SERVER_URL}"
             }
         }    
