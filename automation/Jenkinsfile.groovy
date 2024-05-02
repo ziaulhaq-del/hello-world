@@ -3,7 +3,7 @@ pipeline {
 
     environment {
 
-        PROJECT_KEY= "${env.SERVICE_NAME}-${env.MY_BRANCH}"
+        PROJECT_KEY= "${env.pipelinedemo_SERVICE_NAME}-${env.develop_MY_BRANCH}"
         SONAR_TOKEN= credentials('JENKINS_SONAR_TOKEN_USER')
         CONFIG_FILE = 'automation/generic_config.yaml'  
         ENV_VARS_FILE = 'automation/environment_vars.yaml'
@@ -80,7 +80,7 @@ pipeline {
                 echo "Micro_1 Project Key for microservice_1: ${env.pipelinedemo_REPOSITORY}"
 
 
-                echo "Micro_1 Project Key : ${PROJECT_KEY}"
+                echo "Micro_1 Project Key : ${env.PROJECT_KEY}"
                 //echo "Jenkins server URL for microservice_2: ${env.microservice_2_JENKINS_SERVER_URL}"
             }
         }    
