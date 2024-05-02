@@ -126,7 +126,7 @@ pipeline {
 			}
 		}*/
     }
-    /*
+    
         post {
         always {
                  
@@ -134,8 +134,9 @@ pipeline {
             subject: "CI Pipeline for ${selectedBranch}",
             recipientProviders: [[$class: 'RequesterRecipientProvider']]
             
+            
 
         }
     }
-    */
+    
 }
