@@ -2,8 +2,7 @@ pipeline {
     agent any;
 
     environment {
-        SERVICE_NAME =""
-        MY_BRANCH = ""
+
         PROJECT_KEY= "${env.SERVICE_NAME}-${env.MY_BRANCH}"
         SONAR_TOKEN= credentials('JENKINS_SONAR_TOKEN_USER')
         CONFIG_FILE = 'automation/generic_config.yaml'  
@@ -77,7 +76,8 @@ pipeline {
                 
                 echo "Project URL for microservice_1: ${env.develop_NAMESPACE}"
 
-
+                def env.SERVICE_NAME = ${env.pipelinedemo_SERVICE_NAME}
+                def env.MY_BRANCH = ${env.develop_MY_BRANCH}
                 echo "Micro_1 Project Key for microservice_1: ${env.pipelinedemo_REPOSITORY}"
 
 
