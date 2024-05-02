@@ -131,9 +131,9 @@ pipeline {
         always {
                  
             emailext body: "Build was successful. Triggered by: ${user}",
-            subject: "CI Pipeline for ${selectedBranch}",
+            subject: "CI Pipeline for ${MY_BRANCH}",
             recipientProviders: [[$class: 'RequesterRecipientProvider']]
-            
+
             
 
         }
