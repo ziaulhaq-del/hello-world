@@ -64,7 +64,7 @@ pipeline {
             steps {
                 // Load environment-specific variables
                 script {
-                    def configVar = readYaml(file: ENV_VARS_FILE)
+                    def configVar = readYaml(file: CONFIG_FILE)
                     configVar.each { conf, values ->
                         values.each { key, value ->
                             env."${conf}_${key}" = value
