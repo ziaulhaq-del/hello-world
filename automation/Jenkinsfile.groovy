@@ -93,15 +93,26 @@ pipeline {
                     sh "git config --global --add safe.directory ${env.WORKSPACE}"
                     
                     
-                     def previousBuildInfo = currentBuild.rawBuild.getPreviousSuccessfulBuild()
+                    // Fetch the previous build information
+                    def previousBuildInfo = currentBuild.rawBuild.getPreviousSuccessfulBuild()
                     if (previousBuildInfo) {
                         // Extract the commit hash from the previous build
                         def previousBuildCommitHash = previousBuildInfo.actions.find { it instanceof hudson.plugins.git.util.BuildData }.lastBuiltRevision.sha1String
                         echo "Commit hash of the previous successful build: ${previousBuildCommitHash}"
+                        
+                        // Get the commit hash of the current build
+                        def currentBuildCommitHash = sh(script: 'git rev-parse HEAD', returnStdout: true).trim()
+                        echo "Commit hash of the current build: ${currentBuildCommitHash}"
+                        
+                        // Compare the commit hashes
+                        if (currentBuildCommitHash == previousBuildCommitHash) {
+                            echo "The commit hashes match. No changes since the previous successful build."
+                        } else {
+                            echo "The commit hashes are different. Changes detected since the previous successful build."
+                        }
                     } else {
                         echo "No previous successful build found."
                     }
-
 
                     //env.PROJECT_URL = envi.services.service[1].PROJECT_UR
                     //echo "Jenkins server URL for microservice_2: ${env.jenkins_server_url}"
