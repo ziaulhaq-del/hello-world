@@ -93,7 +93,7 @@ pipeline {
                     
                     sh "git config --global --add safe.directory ${env.WORKSPACE}"
                     
-                    /*
+                    
                     // Fetch the previous build information
                     def previousBuildInfo = currentBuild.rawBuild.getPreviousSuccessfulBuild()
                     if (previousBuildInfo) {
@@ -102,11 +102,11 @@ pipeline {
                         echo "Commit hash of the previous successful build: ${previousBuildCommitHash}"
                         
                         // Get the commit hash of the current build
-                        env.currentBuildCommitHash = sh(script: 'git rev-parse HEAD', returnStdout: true).trim()
-                        echo "Commit hash of the current build: ${env.currentBuildCommitHash}"
+                        def currentBuildCommitHash = sh(script: 'git rev-parse HEAD', returnStdout: true).trim()
+                        echo "Commit hash of the current build: ${currentBuildCommitHash}"
                         
                         // Compare the commit hashes
-                        if (env.currentBuildCommitHash == previousBuildCommitHash) {
+                        if (currentBuildCommitHash == previousBuildCommitHash) {
                             echo "The commit hashes match. No changes since the previous successful build."
                         } else {
                             echo "The commit hashes are different. Changes detected since the previous successful build."
@@ -114,9 +114,8 @@ pipeline {
                     } else {
                         echo "No previous successful build found."
                     }
-                    */
-                    def currentBuildCommitHash = sh(script: 'git rev-parse HEAD', returnStdout: true).trim()
-                    echo "Commit hash of the current build: ${currentBuildCommitHash}"
+                    
+
                     //env.PROJECT_URL = envi.services.service[1].PROJECT_UR
                     //echo "Jenkins server URL for microservice_2: ${env.jenkins_server_url}"
                    
