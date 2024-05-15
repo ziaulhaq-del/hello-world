@@ -6,7 +6,7 @@ pipeline {
         CONFIG_FILE = 'automation/generic_config.yaml'  
         ENV_VARS_FILE = 'automation/environment_vars.yaml'
         GITHUB_REPO = "MohamedHamdy404/devops"
-        currentBuildCommitHash = "55555"
+       // currentBuildCommitHash = "55555"
 
         def details = """ <h1>Jenkins Job Output </h1>
 			<p> Build Status:   ${currentBuild.currentResult} </p>
@@ -93,7 +93,7 @@ pipeline {
                     
                     sh "git config --global --add safe.directory ${env.WORKSPACE}"
                     
-                    
+                    /*
                     // Fetch the previous build information
                     def previousBuildInfo = currentBuild.rawBuild.getPreviousSuccessfulBuild()
                     if (previousBuildInfo) {
@@ -114,7 +114,9 @@ pipeline {
                     } else {
                         echo "No previous successful build found."
                     }
-
+                    */
+                    def currentBuildCommitHash = sh(script: 'git rev-parse HEAD', returnStdout: true).trim()
+                    echo "Commit hash of the current build: ${currentBuildCommitHash}"
                     //env.PROJECT_URL = envi.services.service[1].PROJECT_UR
                     //echo "Jenkins server URL for microservice_2: ${env.jenkins_server_url}"
                    
