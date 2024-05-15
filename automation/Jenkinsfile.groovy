@@ -6,7 +6,7 @@ pipeline {
         CONFIG_FILE = 'automation/generic_config.yaml'  
         ENV_VARS_FILE = 'automation/environment_vars.yaml'
         GITHUB_REPO = "MohamedHamdy404/devops"
-        
+        currentBuildCommitHash = "55555"
 
         def details = """ <h1>Jenkins Job Output </h1>
 			<p> Build Status:   ${currentBuild.currentResult} </p>
@@ -18,7 +18,7 @@ pipeline {
     }
 
     stages {
-        
+        /*
         stage("checkout") {
             steps {
                 git url: "https://github.com/${GITHUB_REPO}.git", branch: 'develop'
