@@ -102,11 +102,11 @@ pipeline {
                         echo "Commit hash of the previous successful build: ${previousBuildCommitHash}"
                         
                         // Get the commit hash of the current build
-                        def currentBuildCommitHash = sh(script: 'git rev-parse HEAD', returnStdout: true).trim()
-                        echo "Commit hash of the current build: ${currentBuildCommitHash}"
+                        env.currentBuildCommitHash = sh(script: 'git rev-parse HEAD', returnStdout: true).trim()
+                        echo "Commit hash of the current build: ${env.currentBuildCommitHash}"
                         
                         // Compare the commit hashes
-                        if (currentBuildCommitHash == previousBuildCommitHash) {
+                        if (env.currentBuildCommitHash == previousBuildCommitHash) {
                             echo "The commit hashes match. No changes since the previous successful build."
                         } else {
                             echo "The commit hashes are different. Changes detected since the previous successful build."
