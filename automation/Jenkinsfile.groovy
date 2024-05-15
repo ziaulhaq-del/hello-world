@@ -104,7 +104,7 @@ pipeline {
                         // Get the commit hash of the current build
                         def currentBuildCommitHash = sh(script: 'git rev-parse HEAD', returnStdout: true).trim()
                         echo "Commit hash of the current build: ${currentBuildCommitHash}"
-                        
+                        /*
                         // Compare the commit hashes
                         if (currentBuildCommitHash == previousBuildCommitHash) {
                             echo "The commit hashes match. No changes since the previous successful build."
@@ -114,7 +114,7 @@ pipeline {
                     } else {
                         echo "No previous successful build found."
                     }
-                    
+                    */
 
                     //env.PROJECT_URL = envi.services.service[1].PROJECT_UR
                     //echo "Jenkins server URL for microservice_2: ${env.jenkins_server_url}"
