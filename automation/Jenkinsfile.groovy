@@ -93,7 +93,8 @@ pipeline {
                     
                     sh "git config --global --add safe.directory ${env.WORKSPACE}"
                     
-                    
+                    def currentBuildCommitHash = sh(script: 'git rev-parse HEAD', returnStdout: true).trim()
+                    echo "Commit hash of the current build: ${currentBuildCommitHash}"
                     // Fetch the previous build information
                     def previousBuildInfo = currentBuild.rawBuild.getPreviousSuccessfulBuild()
                     if (previousBuildInfo) {
@@ -102,8 +103,7 @@ pipeline {
                         echo "Commit hash of the previous successful build: ${previousBuildCommitHash}"
                         
                         // Get the commit hash of the current build
-                        def currentBuildCommitHash = sh(script: 'git rev-parse HEAD', returnStdout: true).trim()
-                        echo "Commit hash of the current build: ${currentBuildCommitHash}"
+
                         /*
                         // Compare the commit hashes
                         if (currentBuildCommitHash == previousBuildCommitHash) {
