@@ -104,13 +104,13 @@ pipeline {
                         
                         // Get the commit hash of the current build
 
-                        /*
+                        
                         // Compare the commit hashes
                         if (currentBuildCommitHash == previousBuildCommitHash) {
                             echo "The commit hashes match. No changes since the previous successful build."
                         } else {
                             echo "The commit hashes are different. Changes detected since the previous successful build."
-                        }*/
+                        }
                     } else {
                         echo "No previous successful build found."
                     }
