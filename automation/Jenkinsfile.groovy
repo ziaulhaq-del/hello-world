@@ -14,7 +14,6 @@ pipeline {
 			<p> Jenkins Job Console Log:   <a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a></p>
 			<p> New Tag Version: [${env.TAG}] </p>
 			"""
-        user = "${currentBuild.rawBuild.getCause(hudson.model.Cause$UserIdCause)?.userName ?: 'Unkown' }"
     }
 
     stages {
@@ -66,7 +65,7 @@ pipeline {
                     }
                 env.SERVICE_NAME = "${env.pipelinedemo_SERVICE_NAME}"
                 env.MY_BRANCH = "${env.develop_MY_BRANCH}"
-                env.PROJECT_KEY= "${env.SERVICE_NAME}-${env.MY_BRANCH}"
+                PROJECT_KEY= "${env.SERVICE_NAME}-${env.MY_BRANCH}"
                 }
             }
         }
@@ -92,17 +91,12 @@ pipeline {
                 script {
                     
                     sh "git config --global --add safe.directory ${env.WORKSPACE}"
-                    sh 'echo "autotag started"'
-
-                    sh ' echo "READING YAML"'
-                    //sh ". ${ENV_VARS_FILE} && export \$(cut -d= -f1 ${ENV_VARS_FILE} | xargs)"
-                    /*pipelineScripts = load "automation/tag.groovy"
-                    pipelineScripts.AutoTag()
                     
-                    sh 'echo ${TAG}'
-                    */
-                    //sh "cat ${ENV_VARS_FILE}"
-                    sh  "echo ${user}"
+                    
+                    def lastCommitHash = sh(script: 'git rev-parse HEAD', returnStdout: true).trim()
+                    echo "Last commit hash: ${lastCommitHash}"
+
+
                     //env.PROJECT_URL = envi.services.service[1].PROJECT_UR
                     //echo "Jenkins server URL for microservice_2: ${env.jenkins_server_url}"
                    
@@ -127,16 +121,21 @@ pipeline {
 		}*/
     }
     
-        post {
-        always {
-                 
-            emailext body: "Build was successful. Triggered by: ${user}",
-            subject: "CI Pipeline for ${MY_BRANCH}",
-            recipientProviders: [[$class: 'RequesterRecipientProvider']]
+    post{
+		always {
 
-            
-
+			writeFile (file: 'template.html', text: details )
+			archiveArtifacts artifacts: 'template.html'	
+            script{	
+                try{
+                    currentBuild.description = "Generated Version: s"
+                // junit 'target/**/*.xml'
+                }catch (Exception e){
+                    echo "An exception occurred: ${e.message}"
+                }
+            }
         }
+		
+        
     }
-    
 }
