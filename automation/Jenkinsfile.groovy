@@ -93,8 +93,14 @@ pipeline {
                     sh "git config --global --add safe.directory ${env.WORKSPACE}"
                     
                     
-                    def lastCommitHash = sh(script: 'git rev-parse HEAD', returnStdout: true).trim()
-                    echo "Last commit hash: ${lastCommitHash}"
+                     def previousBuildInfo = currentBuild.rawBuild.getPreviousSuccessfulBuild()
+                    if (previousBuildInfo) {
+                        // Extract the commit hash from the previous build
+                        def previousBuildCommitHash = previousBuildInfo.actions.find { it instanceof hudson.plugins.git.util.BuildData }.lastBuiltRevision.sha1String
+                        echo "Commit hash of the previous successful build: ${previousBuildCommitHash}"
+                    } else {
+                        echo "No previous successful build found."
+                    }
 
 
                     //env.PROJECT_URL = envi.services.service[1].PROJECT_UR
