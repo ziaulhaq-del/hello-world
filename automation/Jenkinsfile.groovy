@@ -6,6 +6,7 @@ pipeline {
         CONFIG_FILE = 'automation/generic_config.yaml'  
         ENV_VARS_FILE = 'automation/environment_vars.yaml'
         GITHUB_REPO = "MohamedHamdy404/devops"
+        status = "green"
        // currentBuildCommitHash = "55555"
 
         def details = """ <h1>Jenkins Job Output </h1>
@@ -108,7 +109,7 @@ pipeline {
                         // Compare the commit hashes
                         if (currentBuildCommitHash == previousBuildCommitHash) {
                             echo "The commit hashes match. No changes since the previous successful build."
-                            return params.SKIP_NEXT_STAGES == 'true'
+                            status = "red"
                         } else {
                             echo "The commit hashes are different. Changes detected since the previous successful build."
                         }
@@ -128,7 +129,7 @@ pipeline {
         stage('publish report template'){
 			steps{
 				script{
-                    if(params.SKIP_NEXT_STAGES == 'true')
+                    if(status == "red")
                     {
                         return
                     }else {
