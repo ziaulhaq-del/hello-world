@@ -125,10 +125,14 @@ pipeline {
             }
         }
 
-        /*stage('publish report template'){
+        stage('publish report template'){
 			steps{
 				script{
                     sh "echo 'stage to publish report'"
+                    sh "echo 'stage to publish report'"
+                    sh "echo 'stage to publish report'"
+                    sh "echo 'stage to publish report'"
+                    /*
                     details = """ <h1>Jenkins Job Output </h1>
                     <p> Build Status:   ${currentBuild.currentResult} </p>
                     <p> Jenkins Job Name:   [ ${env.JOB_NAME} ] </p> 
@@ -136,9 +140,10 @@ pipeline {
                     <p> Jenkins Job Console Log:   <a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a></p>
                     <p> New Tag Version: [${env.TAG}] </p>
                     """
+                    */
                 }
 			}
-		}*/
+		}
     }
     
     post{
