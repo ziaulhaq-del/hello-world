@@ -108,6 +108,7 @@ pipeline {
                         // Compare the commit hashes
                         if (currentBuildCommitHash == previousBuildCommitHash) {
                             echo "The commit hashes match. No changes since the previous successful build."
+                            return params.SKIP_NEXT_STAGES == 'true'
                         } else {
                             echo "The commit hashes are different. Changes detected since the previous successful build."
                         }
