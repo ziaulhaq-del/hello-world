@@ -128,10 +128,15 @@ pipeline {
         stage('publish report template'){
 			steps{
 				script{
+                    if(params.SKIP_NEXT_STAGES == 'true')
+                    {
+                        return
+                    }else {
                     sh "echo 'stage to publish report'"
                     sh "echo 'stage to publish report'"
                     sh "echo 'stage to publish report'"
                     sh "echo 'stage to publish report'"
+                    }
                     /*
                     details = """ <h1>Jenkins Job Output </h1>
                     <p> Build Status:   ${currentBuild.currentResult} </p>
