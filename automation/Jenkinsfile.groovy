@@ -6,7 +6,7 @@ pipeline {
         CONFIG_FILE = 'automation/generic_config.yaml'  
         ENV_VARS_FILE = 'automation/environment_vars.yaml'
         //GITHUB_REPO = "MohamedHamdy404/devops"
-        flag = "green"
+        
        // currentBuildCommitHash = "55555"
 
         def details = """ <h1>Jenkins Job Output </h1>
@@ -108,7 +108,7 @@ pipeline {
         stage('publish report template'){
 			steps{
 				script{
-                    if(flag == "red")
+                    if(env.flag == "red")
                     {
                         sh "echo 'flag is red'"
                         return
