@@ -67,7 +67,7 @@ pipeline {
                     }
                 env.SERVICE_NAME = "${env.pipelinedemo_SERVICE_NAME}"
                 env.MY_BRANCH = "${env.develop_MY_BRANCH}"
-                PROJECT_KEY= "${env.SERVICE_NAME}-${env.MY_BRANCH}"
+                env.PROJECT_KEY= "${env.SERVICE_NAME}-${env.MY_BRANCH}"
                 }
             }
         }
@@ -95,7 +95,7 @@ pipeline {
                     sh "git config --global --add safe.directory ${env.WORKSPACE}"
                     
 					pipelineScripts = load "automation/changeDiff.groovy"
-					pipelineScripts.CompileCode()
+					pipelineScripts.getChanges()
 				    }
                     
                     //env.PROJECT_URL = envi.services.service[1].PROJECT_UR
