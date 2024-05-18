@@ -94,7 +94,7 @@ pipeline {
                     
                     sh "git config --global --add safe.directory ${env.WORKSPACE}"
                     
-					pipelineScripts = load "automation/changesDiff.groovy"
+					pipelineScripts = load "automation/changeDiff.groovy"
 					pipelineScripts.CompileCode()
 				    }
                     
