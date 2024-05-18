@@ -3,8 +3,8 @@ pipeline {
 
     environment {
         SONAR_TOKEN= credentials('JENKINS_SONAR_TOKEN_USER')
-        //CONFIG_FILE = 'automation/generic_config.yaml'  
-       // ENV_VARS_FILE = 'automation/environment_vars.yaml'
+        CONFIG_FILE = 'automation/generic_config.yaml'  
+        ENV_VARS_FILE = 'automation/environment_vars.yaml'
         //GITHUB_REPO = "MohamedHamdy404/devops"
         status = "green"
        // currentBuildCommitHash = "55555"
