@@ -104,7 +104,6 @@ pipeline {
                     
                 }
             }
-        }
 
         stage('publish report template'){
 			steps{
