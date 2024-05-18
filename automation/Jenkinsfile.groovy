@@ -98,7 +98,7 @@ pipeline {
 					pipelineScripts.getChanges()
 				    }
                     
-                    //env.PROJECT_URL = envi.services.service[1].PROJECT_UR
+                    //env.PROJECT_URL = envi.services.service[1].PROJECT_URL
                     //echo "Jenkins server URL for microservice_2: ${env.jenkins_server_url}"
                    
                     
