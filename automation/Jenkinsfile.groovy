@@ -110,6 +110,7 @@ pipeline {
 				script{
                     if(flag == "red")
                     {
+                        sh "echo 'flag is red'"
                         return
                     }else {
                     sh "echo 'stage to publish report'"
