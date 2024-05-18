@@ -1,4 +1,5 @@
 def getChanges() {
+    script{
      def currentBuildCommitHash = sh(script: 'git rev-parse HEAD', returnStdout: true).trim()
         echo "Commit hash of the current build: ${currentBuildCommitHash}"
         // Fetch the previous build information
@@ -22,6 +23,6 @@ def getChanges() {
             echo "No previous successful build found."
         }
                     
-
+    }
 }
 return this;

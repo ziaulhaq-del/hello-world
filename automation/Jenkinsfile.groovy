@@ -92,7 +92,7 @@ pipeline {
             steps {
                 script {
                     
-                    //sh "git config --global --add safe.directory ${env.WORKSPACE}"
+                    sh "git config --global --add safe.directory ${env.WORKSPACE}"
                     
 					pipelineScripts = load "automation/changeDiff.groovy"
 					pipelineScripts.CompileCode()
