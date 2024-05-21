@@ -72,7 +72,7 @@ pipeline {
             }
         }
 
-            stage('Use Environment Variables') {
+            stage('deploy') {
             steps {
                 // Now you can access the environment variables in your pipeline
                 //${env.microservice_1_JENKINS_SERVER_URL}
