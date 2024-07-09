@@ -1,0 +1,10 @@
+---
+- name: testing ubuntu file
+  hosts: localhost
+  tasks:
+    - name: test version of ubuntu
+      command: cat /etc/os_realase
+      register: version
+    - name: print the value of version
+      debug:
+        msg: "{{ version.stdout }}"
