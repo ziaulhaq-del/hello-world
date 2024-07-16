@@ -5,20 +5,24 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building...'
-                // Add your build steps here
+                sh 'echo This is where your build steps would go'
+                // Add your actual build commands here
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing...'
-                // Add your test steps here
+                sh 'echo This is where your test steps would go'
+                // Add your actual test commands here
             }
         }
         stage('Deploy') {
             steps {
                 echo 'Deploying...'
-                // Add your deployment steps here
+                sh 'echo This is where your deploy steps would go'
+                // Add your actual deployment commands here
             }
         }
     }
 }
+
