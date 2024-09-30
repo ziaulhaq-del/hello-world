@@ -1,0 +1,13 @@
+name: PR to Master
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  echo_hi:
+    runs-on: self-hosted  # Use self-hosted runner
+    steps:
+      - name: Echo Hi
+        run: echo "Hi from PR to master!"
