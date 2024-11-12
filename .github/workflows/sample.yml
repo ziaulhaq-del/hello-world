@@ -1,0 +1,41 @@
+name: Build and Deploy Docker to Azure VM
+
+on:
+  push:
+    branches:
+      - main 
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Login to Azure Container Registry
+        uses: azure/docker-login@v1
+        with:
+          login-server: ${{ secrets.AZURE_REGISTRY_LOGIN_SERVER }}
+          username: ${{ secrets.AZURE_REGISTRY_USERNAME }}
+          password: ${{ secrets.AZURE_REGISTRY_PASSWORD }}
+
+    
+      - name: Build Docker image
+        run: |
+          docker build -t ${{ secrets.AZURE_REGISTRY_LOGIN_SERVER }}/myapp:latest .
+
+      - name: Push Docker image to ACR
+        run: |
+          docker push ${{ secrets.AZURE_REGISTRY_LOGIN_SERVER }}/myapp:latest
+
+      - name: Deploy to Azure VM
+        uses: appleboy/ssh-action@v0.1.5
+        with:
+          host: ${{ secrets.AZURE_VM_IP }}  # Public IP of your Azure VM
+          username: ${{ secrets.AZURE_VM_USERNAME }}
+          key: ${{ secrets.AZURE_VM_SSH_KEY }}  # SSH private key
+          script: |
+            docker login ${{ secrets.AZURE_REGISTRY_LOGIN_SERVER }} -u ${{ secrets.AZURE_REGISTRY_USERNAME }} -p ${{ secrets.AZURE_REGISTRY_PASSWORD }}
+            docker pull ${{ secrets.AZURE_REGISTRY_LOGIN_SERVER }}/myapp:latestr
+            docker run -d --name myapp -p 80:80 ${{ secrets.AZURE_REGISTRY_LOGIN_SERVER }}/myapp:latest
