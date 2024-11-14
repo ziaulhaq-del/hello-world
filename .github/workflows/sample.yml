@@ -24,8 +24,8 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t lucky.azurecr.io/<your-image-name>:latest .
+          docker build -t lucky.azurecr.io/my-app:latest .
 
       - name: Push Docker image
         run: |
-          docker push lucky.azurecr.io/<your-image-name>:latest
+          docker push lucky.azurecr.io/my-app:latest
